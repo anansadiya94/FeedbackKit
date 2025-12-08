@@ -333,11 +333,11 @@ FeedbackKit uses a protocol-based architecture that separates concerns:
                   │ implemented by
         ┌─────────┴──────────┐
         ▼                    ▼
-┌───────────────┐    ┌──────────────┐
-│ FeedbackKitJira│    │ FeedbackKitAI│
-│  JiraProvider  │    │ OpenAIEnhancer│
-│                │    │ AnthropicEnhancer│
-└───────────────┘    └──────────────┘
+┌──────────────--─┐    ┌─-───----──────────┐
+│ FeedbackKitJira │    │ FeedbackKitAI     │
+│  JiraProvider   │    │ OpenAIEnhancer    │
+│                 │    │ AnthropicEnhancer │
+└──────────────-─-┘    └─----─────────────-┘
 ```
 
 ## Testing
