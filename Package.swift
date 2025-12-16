@@ -7,7 +7,7 @@ let package = Package(
         .iOS(.v17)
     ],
     products: [
-        .library(name: "FeedbackKit", targets: ["FeedbackKitUI"]),
+        .library(name: "FeedbackKit", targets: ["FeedbackKit"]),
         .library(name: "FeedbackKitCore", targets: ["FeedbackKitCore"]),
         .library(name: "FeedbackKitJira", targets: ["FeedbackKitJira"]),
         .library(name: "FeedbackKitAI", targets: ["FeedbackKitAI"]),
@@ -24,6 +24,15 @@ let package = Package(
         ),
     ],
     targets: [
+        .target(
+            name: "FeedbackKit",
+            dependencies: [
+                "FeedbackKitCore",
+                "FeedbackKitUI",
+                "FeedbackKitJira",
+                "FeedbackKitAI",
+            ]
+        ),
         .target(
             name: "FeedbackKitCore",
             dependencies: []

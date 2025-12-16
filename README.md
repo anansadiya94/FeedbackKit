@@ -22,11 +22,11 @@ Add FeedbackKit to your project using Xcode:
 1. File → Add Package Dependencies
 2. Enter: `https://github.com/yourorg/FeedbackKit`
 3. Select the modules you need:
-   - `FeedbackKit` - All-in-one (includes Core + UI)
-   - `FeedbackKitCore` - Just the protocols and models
-   - `FeedbackKitJira` - Jira integration
-   - `FeedbackKitAI` - AI enhancement (OpenAI, Claude)
-   - `FeedbackKitUI` - SwiftUI views and TCA features
+   - `FeedbackKit` - **Recommended** - All-in-one package (includes Core, UI, Jira, and AI)
+   - `FeedbackKitCore` - Just the protocols and models (for custom implementations)
+   - `FeedbackKitJira` - Only Jira integration
+   - `FeedbackKitAI` - Only AI enhancement (OpenAI, Claude)
+   - `FeedbackKitUI` - Only SwiftUI views and TCA features
 
 Or add to your `Package.swift`:
 
@@ -37,6 +37,8 @@ dependencies: [
 ```
 
 ## Quick Start
+
+> **Note:** Simply `import FeedbackKit` to access all features (Core, UI, Jira, and AI). You no longer need to import multiple packages! Individual modules are still available if you prefer granular imports.
 
 ### Basic Usage (NoOp Provider)
 
@@ -70,7 +72,6 @@ To submit feedback to Jira, configure the Jira provider with your credentials:
 
 ```swift
 import FeedbackKit
-import FeedbackKitJira
 
 struct ContentView: View {
     @State private var showFeedback = false
@@ -109,8 +110,6 @@ Add AI-powered description improvement:
 
 ```swift
 import FeedbackKit
-import FeedbackKitJira
-import FeedbackKitAI
 
 FeedbackView(
     store: Store(initialState: FeedbackFeature.State()) {
@@ -131,8 +130,6 @@ FeedbackView(
 Use Anthropic Claude instead of OpenAI:
 
 ```swift
-import FeedbackKitAI
-
 $0.descriptionEnhancer = AnthropicEnhancer(
     configuration: .anthropic(
         apiKey: ProcessInfo.processInfo.environment["ANTHROPIC_API_KEY"]!
